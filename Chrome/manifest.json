@@ -1,0 +1,48 @@
+{
+   "action": {
+      "default_icon": {
+         "16": "data/icons/16.png",
+         "32": "data/icons/32.png",
+         "48": "data/icons/48.png",
+         "64": "data/icons/64.png"
+      },
+      "default_title": "Audio only on YouTube™"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "commands": {
+      "_execute_action": {
+      }
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "bundled-content-script.js" ],
+      "matches": [ "*://*.youtube.com/*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": true,
+      "js": [ "bundled-content-script.js" ],
+      "matches": [ "*://*.youtube.com/embed*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Yes it is possible to play no video on YouTube only audio",
+   "homepage_url": "https://ddon.com/audio-only-for-youtube.html",
+   "host_permissions": [ "*://*.youtube.com/*", "*://*.googlevideo.com/*" ],
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png",
+      "64": "data/icons/64.png"
+   },
+   "manifest_version": 3,
+   "name": "Audio only on YouTube™",
+   "permissions": [ "storage", "webRequest", "declarativeNetRequest" ],
+   "short_name": "audio-on-youtube",
+   "version": "0.1.6",
+   "web_accessible_resources": [ {
+      "matches": [ "*://*.youtube.com/*" ],
+      "resources": [ "data/content_script.js" ]
+   } ]
+}
